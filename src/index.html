@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
+        integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
+
+    <title>RUPG</title>
+</head>
+
+<body>
+    <script id="user-card-template" type="text/x-handlebars-template">
+        <div class="card-image responsive-img circle">
+            <img class="responsive-img circle" src="{{userCard.userDetails.imageUrl}}">
+            <span class="card-title">
+                <span class="user-name">{{userCard.userDetails.name}}</span><br />
+                <span class="user-address">{{userCard.userDetails.address.city}}, {{userCard.userDetails.address.state}}</span>
+            </span>
+        </div>
+        <div class="card-content">
+            <div class="favorite-quote">
+                <div class="quote-title">Favorite quote:</div>
+                <div class="quote">{{userCard.quote}}</div>
+            </div>
+            <div class="pokemon valign-wrapper">
+                <span class="highlight">Favorite Pokemon:&nbsp;</span>
+                <span class="pokemon-name" data-id="{{userCard.pokemon.id}}"> {{userCard.pokemon.name}}&nbsp;</span>
+                <img class="pokemon-img"
+                    src="{{userCard.pokemon.imageUrl}}">
+            </div>
+        </div>
+    </script>
+    <script id="about-friends-template" type="text/x-handlebars-template">
+        <div class="about-me">
+            <h4>About Me</h4>
+            <div class="about-me-content">{{userCard.aboutMe}}
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <h4>Friends</h4>
+                </tr>
+            <tbody>
+                {{#each userCard.userDetails.friends}}
+                <tr>
+                    <td>{{name}}</td>>
+                </tr>
+              {{/each}}
+            </tbody>
+        </table>
+    </script>
+    <div class="row s4 m4">
+        <div class="col s3 m3">
+            <div class="card card-container">
+            </div>
+        </div>
+        <div class="friends col s6 m6">
+            <div class="about-friends-container"></div>
+        </div>
+        <div class="friends col s1 m3">
+            <div class="center-align generate-user-wrapper">
+                <button class="generate-user-btn waves-effect waves-light">Generate User</button>
+            </div>
+        </div>
+    </div>
+    <script src="../build/user.js"></script>
+    <script src="../build/aboutMe.js"></script>
+    <script src="../build/dataModel.js"></script>
+    <script src="../build/friend.js"></script>
+    <script src="../build/pokemon.js"></script>
+    <script src="../build/quote.js"></script>
+    <script src="../build/userCard.js"></script>
+    <script src="../build/renderer.js"></script>
+    <script src="../build/rupgController.js"></script>
+</body>
+
+</html>
